@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Game</title>
+
+
+    <link rel="stylesheet" href="/static/style.css" />
+
+</head>
+<body onload = start()>
+    <div id="gameWrapper"></div>
+
+    <div class="split left">
+        <div class="centered">
+            <p id = "score1" class = "score">Total Score: 0</p>
+            <h2></h2>
+            <button id = "draw1" class = "player1btn" disabled onclick = draw()>Draw</button>
+            <button id = "stay1" class = "player1btn" disabled onclick = stay()>Stay</button>
+            <div>
+                <div>
+                    <label for="sum1">sum: </label><p style="display: inline "id = "sum1">0</p>
+                </div>
+            </div>
+
+
+        </div>
+        <ul id = "cards1">
+        </ul>
+    </div>
+
+    <div class="split right">
+        <div class="centered">
+            <p id = "score2" class = "score">Total Score: 0</p>
+            <h2></h2>
+            <button id = "draw2" class = "player2btn" disabled onclick = draw()>Draw</button>
+            <button id = "stay2" class = "player2btn" onclick = stay() disabled>Stay</button>
+
+            <div>
+                <div>
+                    <label for="sum2">sum: </label><p style="display: inline "id = "sum2">0</p>
+                </div>
+            </div>
+        </div>
+        <ul id = "cards2">
+        </ul>
+    </div>
+
+    <button onclick = start()  id="newGame" disabled>New Game</button>
+    <button id = "btnAnother" onclick = initBoard() disabled>Another Round</button>
+    <div class = "playerName">
+        <input class = "name" type="text" placeholder="enter player name"/>
+        <button class = "join">Join</button>
+    </div>
+
+    <ul class = "players">
+
+    </ul>
+
+
+    <p id = "message"></p>
+
+    <p id = "round">Round: 1</p>
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+    <script type="application/javascript" src="/static/index.js"></script>
+
+</body>
+</html>
