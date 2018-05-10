@@ -61,9 +61,20 @@ app.post('/room/:roomId/players/:playerName/draw', function (req, res) {
 app.post('/room/:roomId/initiate',function(req,res){
     var roomId = req.params.roomId;
 
-    var room = db.rooms.find((room)=>{
-       return room.name === roomId;
+    if (!roomId) {
+        res.status(500).send('Invalid room name');
+
+        return;
+    }
+    let room = db.rooms.find((room) => {
+        return room.name === roomId;
     });
+
+    if (!room) {
+        res.status(400).send(`room ${roomId} not exists`);
+
+        return;
+    }
 
     room.getPlayers().forEach((player)=>{
        player.initiatePlayer();
