@@ -18,7 +18,8 @@
                 if(Object.keys(data).length === 2){
                     $(".join").attr("disabled",true);
                 }
-                if(Object.keys(data).length !== 0){
+                var content = $(".left h2")[0].innerHTML;
+                if(Object.keys(data).length !== 0 && content ===""){
                     $(".left h2").append(data.players[0].name);
                     $(".right h2").append(data.players[1].name);
                 }
@@ -101,11 +102,7 @@
     function turnChange(){
         $(".player1btn").prop('disabled', function(i, v) { return !v; });
         $(".player2btn").prop('disabled', function(i, v) { return !v; });
-        if(playerInTurn == 1){
-            playerInTurn = 2;
-        }else{
-            playerInTurn = 1;
-        }
+        playerInTurn === 1 ? playerInTurn = 2 : playerInTurn = 1;
     }
 
     function addNewListItem(ulName,card){
