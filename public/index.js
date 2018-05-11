@@ -17,6 +17,10 @@
             success: function (data) {
                 if(Object.keys(data).length === 2){
                     $(".join").attr("disabled",true);
+                    $(".player"+playerInTurn+"btn").prop( "disabled", false );
+                }
+                else{
+                    $(".player"+playerInTurn+"btn").prop( "disabled", true );
                 }
                 var content = $(".left h2")[0].innerHTML;
                 if(Object.keys(data).length !== 0 && content ===""){
@@ -52,6 +56,7 @@
                 var theWinner = totalScore1>totalScore2 ? 1 : 2;
                 $("#message").html(`game over. player ${theWinner} won`);
                 $("#newGame").prop("disabled",false);
+                playerInTurn = theWinner;
             }
             else {
                 $("#message").html(`player${winner} won!`);
@@ -154,11 +159,14 @@
          url:"http://localhost:3000/room/123/players/"+name.val(),
          success: function (data) {
              console.log("success");
+             var index = data.players.length-1;
+             index === 0 ?
+                $(".left h2").append(data.players[index].name):
+                $(".right h2").append(data.players[index].name);
              name.val("");
              if(data.players.length === 2){
                  $(".join").attr("disabled",true);
-                 $(".left h2").append(data.players[0].name);
-                 $(".right h2").append(data.players[1].name);
+                 start();
              }
          },
          error: function () {
